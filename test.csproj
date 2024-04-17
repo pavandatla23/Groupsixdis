@@ -8,17 +8,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="table3.html" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Include="table3.html" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="CSS\" />
-    <Folder Include="IMG\" />
-    <Folder Include="JS\" />
+    <Folder Include="css\" />
+    <Folder Include="img\" />
   </ItemGroup>
 
 </Project>
