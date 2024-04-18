@@ -106,10 +106,23 @@ function deleteCourse(id) {
 }
 
 
+
+
 // Function to display users
 function displayUsers() {
     const usersTable = document.getElementById('users-table');
     usersTable.innerHTML = ''; // Clear existing data
+    const headerRow = usersTable.insertRow();
+    const idHeader = document.createElement('th');
+    idHeader.textContent = 'Id';
+    headerRow.appendChild(idHeader);
+    const titleHeader = document.createElement('th');
+    titleHeader.textContent = 'StudentName';
+    headerRow.appendChild(titleHeader);
+    const descriptionHeader = document.createElement('th');
+    descriptionHeader.textContent = 'Email';
+    headerRow.appendChild(descriptionHeader);
+
     users.forEach(user => {
         const row = usersTable.insertRow();
         row.innerHTML = `
@@ -172,6 +185,16 @@ function deleteUser(id) {
 function displayEnrollments() {
     const enrollmentsTable = document.getElementById('enrollments-table');
     enrollmentsTable.innerHTML = ''; // Clear existing data
+    const headerRow = enrollmentsTable.insertRow();
+    const idHeader = document.createElement('th');
+    idHeader.textContent = 'Id';
+    headerRow.appendChild(idHeader);
+    const titleHeader = document.createElement('th');
+    titleHeader.textContent = 'StudentName';
+    headerRow.appendChild(titleHeader);
+    const descriptionHeader = document.createElement('th');
+    descriptionHeader.textContent = 'CourseName';
+    headerRow.appendChild(descriptionHeader);
     enrollments.forEach(enrollment => {
         const row = enrollmentsTable.insertRow();
         row.innerHTML = `
