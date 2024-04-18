@@ -361,3 +361,8 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/BackEnd/Backend.cs
+/FronEnd/Frontend.cs
+/Program.cs
+/FronEnd/Frontend.cs
+/BackEnd/Backend.cs
