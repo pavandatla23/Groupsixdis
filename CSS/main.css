@@ -17,20 +17,23 @@ nav {
     padding: 10px;
 }
 
-    nav ul {
+nav ul {
         list-style-type: none;
         padding: 0;
-    }
+}
 
-        nav ul li {
+nav ul li {
             display: inline;
             margin-right: 20px;
-        }
 
-            nav ul li a {
+}
+
+nav ul li a {
                 color: white;
                 text-decoration: none;
-            }
+}
+               
+
 
 main {
     padding: 20px;
@@ -39,6 +42,10 @@ main {
 section {
     margin-bottom: 20px;
 }
+header {
+    background-color: green
+}
+
 
 table {
     width: 100%;
@@ -53,4 +60,19 @@ table {
 
     table th {
         background-color: #f2f2f2;
+    }
+/*footer {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}*/
+@media screen and (max-width: 480px) {
+    /* Adjust styles for small screens (mobile) */
+    header, footer {
+        padding: 5px;
+
     }

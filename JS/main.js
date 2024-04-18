@@ -19,22 +19,32 @@ let users = [
 ];
 
 let enrollments = [
-    { id: 1, userId: 1, courseId: 1 },
-    { id: 2, userId: 2, courseId: 1 },
-    { id: 3, userId: 2, courseId: 2 },
-    { id: 4, userId: 3, courseId: 3 },
-    { id: 5, userId: 4, courseId: 2 },
-    { id: 6, userId: 5, courseId: 1 },
-    { id: 7, userId: 6, courseId: 1 },
-    { id: 8, userId: 7, courseId: 3 },
-    { id: 9, userId: 8, courseId: 2 },
-    { id: 10, userId: 9, courseId: 1 }
+    { id: 1, userName: "John Doe", courseName: "Physics" },
+    { id: 2, userName: "Jane Smith", courseName: "Mathematics" },
+    { id: 3, userName: "Jane Smith", courseName: "Physics" },
+    { id: 4, userName: "Alice Johnson", courseName: "Programming" },
+    { id: 5, userName: "Bob Brown", courseName: "Physics" },
+    { id: 6, userName: "Eva Lee", courseName: "Mathematics" },
+    { id: 7, userName: "Mike Clark", courseName: "Mathematics" },
+    { id: 8, userName: "Sarah White", courseName: "Programming" },
+    { id: 9, userName: "David Lee", courseName: "Physics" },
+    { id: 10, userName: "Emily Johnson", courseName: "Mathematics" }
 ];
 
 // Function to display courses
 function displayCourses() {
     const coursesTable = document.getElementById('courses-table');
     coursesTable.innerHTML = ''; // Clear existing data
+    const headerRow = coursesTable.insertRow();
+    const idHeader = document.createElement('th');
+    idHeader.textContent = 'Id';
+    headerRow.appendChild(idHeader);
+    const titleHeader = document.createElement('th');
+    titleHeader.textContent = 'CourseName';
+    headerRow.appendChild(titleHeader);
+    const descriptionHeader = document.createElement('th');
+    descriptionHeader.textContent = 'Description';
+    headerRow.appendChild(descriptionHeader);
     courses.forEach(course => {
         const row = coursesTable.insertRow();
         row.innerHTML = `
@@ -43,7 +53,7 @@ function displayCourses() {
             <td>${course.description}</td>
             <td><button onclick="editCourse(${course.id})">Edit</button></td>
             <td><button onclick="deleteCourse(${course.id})">Delete</button></td>
-            <td><button onclick="addCourse(${course.id})">ADD</button></td>
+            
         `;
     });
 }
@@ -96,10 +106,23 @@ function deleteCourse(id) {
 }
 
 
+
+
 // Function to display users
 function displayUsers() {
     const usersTable = document.getElementById('users-table');
     usersTable.innerHTML = ''; // Clear existing data
+    const headerRow = usersTable.insertRow();
+    const idHeader = document.createElement('th');
+    idHeader.textContent = 'Id';
+    headerRow.appendChild(idHeader);
+    const titleHeader = document.createElement('th');
+    titleHeader.textContent = 'StudentName';
+    headerRow.appendChild(titleHeader);
+    const descriptionHeader = document.createElement('th');
+    descriptionHeader.textContent = 'Email';
+    headerRow.appendChild(descriptionHeader);
+
     users.forEach(user => {
         const row = usersTable.insertRow();
         row.innerHTML = `
@@ -162,12 +185,22 @@ function deleteUser(id) {
 function displayEnrollments() {
     const enrollmentsTable = document.getElementById('enrollments-table');
     enrollmentsTable.innerHTML = ''; // Clear existing data
+    const headerRow = enrollmentsTable.insertRow();
+    const idHeader = document.createElement('th');
+    idHeader.textContent = 'Id';
+    headerRow.appendChild(idHeader);
+    const titleHeader = document.createElement('th');
+    titleHeader.textContent = 'StudentName';
+    headerRow.appendChild(titleHeader);
+    const descriptionHeader = document.createElement('th');
+    descriptionHeader.textContent = 'CourseName';
+    headerRow.appendChild(descriptionHeader);
     enrollments.forEach(enrollment => {
         const row = enrollmentsTable.insertRow();
         row.innerHTML = `
             <td>${enrollment.id}</td>
-            <td>${enrollment.userId}</td>
-            <td>${enrollment.courseId}</td>
+            <td>${enrollment.userName}</td>
+            <td>${enrollment.courseName}</td>
             <td><button onclick="editEnrollment(${enrollment.id})">Edit</button></td>
             <td><button onclick="deleteEnrollment(${enrollment.id})">Delete</button></td>
         `;
@@ -176,29 +209,30 @@ function displayEnrollments() {
 
 // Function to add a new enrollment
 function addEnrollment() {
-    const userId = prompt("Enter user ID for new enrollment:");
-    const courseId = prompt("Enter course ID for new enrollment:");
-    if (userId && courseId) {
+    const userName = prompt("Enter user name for new enrollment:");
+    const courseName = prompt("Enter course name for new enrollment:");
+    if (userName && courseName) {
         const newEnrollment = {
             id: enrollments.length + 1,
-            userId: parseInt(userId),
-            courseId: parseInt(courseId)
+            userName: userName,
+            courseName: courseName
         };
         enrollments.push(newEnrollment);
         displayEnrollments();
     } else {
-        alert("User ID and course ID are required for adding a new enrollment.");
+        alert("User name and course name are required for adding a new enrollment.");
     }
 }
+
 // Function to edit an enrollment
 function editEnrollment(id) {
     const enrollment = enrollments.find(enrollment => enrollment.id === id);
     if (enrollment) {
-        const newUserId = prompt("Enter new user ID:", enrollment.userId);
-        const newCourseId = prompt("Enter new course ID:", enrollment.courseId);
-        if (newUserId !== null && newCourseId !== null) {
-            enrollment.userId = parseInt(newUserId);
-            enrollment.courseId = parseInt(newCourseId);
+        const newUserName = prompt("Enter new user name:", enrollment.userName);
+        const newCourseName = prompt("Enter new course name:", enrollment.courseName);
+        if (newUserName !== null && newCourseName !== null) {
+            enrollment.userName = newUserName;
+            enrollment.courseName = newCourseName;
             displayEnrollments();
         }
     } else {
@@ -216,6 +250,7 @@ function deleteEnrollment(id) {
         alert("Enrollment not found!");
     }
 }
+
 
 // Call functions to display initial data
 // Call functions to display initial data
