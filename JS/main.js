@@ -1,36 +1,66 @@
 // Dummy data for courses, users, and enrollments
 let courses = [
-    { id: 1, title: "Mathematics", description: "Learn basic math concepts", professor: "Abc" },
-    { id: 2, title: "Physics", description: "Explore the world of physics", professor: "Abc" },
-    { id: 3, title: "Programming", description: "Introduction to programming", professor: "Abc" }
+    { id: 1, title: "Mathematics", description: "Learn basic math concepts", professor: "Smith" },
+    { id: 2, title: "Physics", description: "Explore the world of physics", professor: "Johnson" },
+    { id: 3, title: "Programming", description: "Introduction to programming", professor: "Williams" },
+    { id: 4, title: "Biology", description: "Study of living organisms", professor: "Brown" },
+    { id: 5, title: "Chemistry", description: "Explore the composition of substances", professor: "Taylor" },
+    { id: 6, title: "History", description: "Understanding past events", professor: "Anderson" },
+    { id: 7, title: "Literature", description: "Explore literary works", professor: "Martinez" },
+    { id: 8, title: "Geography", description: "Study of the Earth's surface", professor: "Garcia" },
+    { id: 9, title: "Computer Science", description: "Introduction to computer programming", professor: "Hernandez" },
+    { id: 10, title: "Art", description: "Exploration of artistic expression", professor: "Young" }
 ];
 
 
 let users = [
-    { id: 1, name: "John Doe", email: "john@example.com", country: "ABC" },
-    { id: 2, name: "Jane Smith", email: "jane@example.com", country: "ABC" },
-    { id: 3, name: "Alice Johnson", email: "alice@example.com", country: "ABC" },
-    { id: 4, name: "Bob Brown", email: "bob@example.com", country: "ABC" },
-    { id: 5, name: "Eva Lee", email: "eva@example.com", country: "ABC" },
-    { id: 6, name: "Mike Clark", email: "mike@example.com", country: "ABC" },
-    { id: 7, name: "Sarah White", email: "sarah@example.com", country: "ABC" },
-    { id: 8, name: "David Lee", email: "david@example.com", country: "ABC" },
-    { id: 9, name: "Emily Johnson", email: "emily@example.com", country: "ABC" },
-    { id: 10, name: "Michael Smith", email: "michael@example.com", country: "ABC" }
+    { id: 1, name: "John Doe", email: "john@usf.edu", country: "USA", gender: "Male" },
+    { id: 2, name: "Jane Smith", email: "jane@usf.edu", country: "USA", gender: "Female" },
+    { id: 3, name: "Alice Johnson", email: "alice@usf.edu", country: "France", gender: "Female" },
+    { id: 4, name: "Bob Brown", email: "bob@usf.edu", country: "France", gender: "Male" },
+    { id: 5, name: "Eva Lee", email: "eva@usf.edu", country: "India", gender: "Female" },
+    { id: 6, name: "Mike Clark", email: "mike@usf.edu", country: "India", gender: "Male" },
+    { id: 7, name: "Sarah White", email: "sarah@usf.edu", country: "USA", gender: "Female" },
+    { id: 8, name: "David Lee", email: "david@usf.edu", country: "India", gender: "Male" },
+    { id: 9, name: "Emily Johnson", email: "emily@usf.edu", country: "France", gender: "Female" },
+    { id: 10, name: "Michael Smith", email: "michael@usf.edu", country: "USA", gender: "Male" },
+    { id: 11, name: "Maria Garcia", email: "maria@usf.edu", country: "India", gender: "Female" },
+    { id: 12, name: "Daniel Martinez", email: "daniel@usf.edu", country: "France", gender: "Male" },
+    { id: 13, name: "Laura Taylor", email: "laura@usf.edu", country: "USA", gender: "Female" },
+    { id: 14, name: "Carlos Hernandez", email: "carlos@usf.edu", country: "India", gender: "Male" },
+    { id: 15, name: "Sophia Brown", email: "sophia@usf.edu", country: "France", gender: "Female" },
+    { id: 16, name: "William Lee", email: "william@usf.edu", country: "USA", gender: "Male" },
+    { id: 17, name: "Olivia Johnson", email: "olivia@usf.edu", country: "India", gender: "Female" },
+    { id: 18, name: "James Garcia", email: "james@usf.edu", country: "France", gender: "Male" },
+    { id: 19, name: "Isabella Clark", email: "isabella@usf.edu", country: "USA", gender: "Female" },
+    { id: 20, name: "Alexander Smith", email: "alexander@usf.edu", country: "India", gender: "Male" }
 ];
 
+
+
 let enrollments = [
-    { id: 1, userName: "John Doe", courseName: "Physics" },
-    { id: 2, userName: "Jane Smith", courseName: "Mathematics" },
-    { id: 3, userName: "Jane Smith", courseName: "Physics" },
-    { id: 4, userName: "Alice Johnson", courseName: "Programming" },
-    { id: 5, userName: "Bob Brown", courseName: "Physics" },
-    { id: 6, userName: "Eva Lee", courseName: "Mathematics" },
-    { id: 7, userName: "Mike Clark", courseName: "Mathematics" },
-    { id: 8, userName: "Sarah White", courseName: "Programming" },
-    { id: 9, userName: "David Lee", courseName: "Physics" },
-    { id: 10, userName: "Emily Johnson", courseName: "Mathematics" }
+    { id: 1, userName: "John Doe", courseName: "Physics", professor: "Johnson" },
+    { id: 2, userName: "Jane Smith", courseName: "Mathematics", professor: "Smith" },
+    { id: 3, userName: "Jane Smith", courseName: "Physics", professor: "Johnson" },
+    { id: 4, userName: "Alice Johnson", courseName: "Programming", professor: "Williams" },
+    { id: 5, userName: "Bob Brown", courseName: "Physics", professor: "Johnson" },
+    { id: 6, userName: "Eva Lee", courseName: "Mathematics", professor: "Smith" },
+    { id: 7, userName: "Mike Clark", courseName: "Mathematics", professor: "Smith" },
+    { id: 8, userName: "Sarah White", courseName: "Programming", professor: "Williams" },
+    { id: 9, userName: "David Lee", courseName: "Physics", professor: "Johnson" },
+    { id: 10, userName: "Emily Johnson", courseName: "Mathematics", professor: "Smith" },
+    { id: 11, userName: "Maria Garcia", courseName: "Chemistry", professor: "Taylor" },
+    { id: 12, userName: "Daniel Martinez", courseName: "History", professor: "Anderson" },
+    { id: 13, userName: "Laura Taylor", courseName: "Literature", professor: "Martinez" },
+    { id: 14, userName: "Carlos Hernandez", courseName: "Geography", professor: "Garcia" },
+    { id: 15, userName: "Sophia Brown", courseName: "Computer Science", professor: "Hernandez" },
+    { id: 16, userName: "William Lee", courseName: "Art", professor: "Young" },
+    { id: 17, userName: "Olivia Johnson", courseName: "Biology", professor: "Brown" },
+    { id: 18, userName: "James Garcia", courseName: "Physics", professor: "Johnson" },
+    { id: 19, userName: "Isabella Clark", courseName: "Chemistry", professor: "Taylor" },
+    { id: 20, userName: "Alexander Smith", courseName: "Mathematics", professor: "Smith" }
 ];
+
 
 // Function to display courses
 function displayCourses() {
@@ -130,6 +160,9 @@ function displayUsers() {
     const countryHeader = document.createElement('th');
     countryHeader.textContent = 'Country';
     headerRow.appendChild(countryHeader);
+    const genderHeader = document.createElement('th');
+    genderHeader.textContent = 'Gender';
+    headerRow.appendChild(genderHeader);
 
     users.forEach(user => {
         const row = usersTable.insertRow();
@@ -138,9 +171,10 @@ function displayUsers() {
             <td>${user.name}</td>
             <td>${user.email}</td>
             <td>${user.country}</td>
+            <td>${user.gender}</td>
             <td><button onclick="editUser(${user.id})">Edit</button></td>
             <td><button onclick="deleteUser(${user.id})">Delete</button></td>
-            <td><button onclick="addUser(${user.id})">ADD</button></td>
+           
         `;
     });
 }
@@ -204,12 +238,16 @@ function displayEnrollments() {
     const descriptionHeader = document.createElement('th');
     descriptionHeader.textContent = 'CourseName';
     headerRow.appendChild(descriptionHeader);
+    const eProfessorHeader = document.createElement('th');
+    eProfessorHeader.textContent = 'ProfessorName';
+    headerRow.appendChild(eProfessorHeader);
     enrollments.forEach(enrollment => {
         const row = enrollmentsTable.insertRow();
         row.innerHTML = `
             <td>${enrollment.id}</td>
             <td>${enrollment.userName}</td>
             <td>${enrollment.courseName}</td>
+            <td>${enrollment.professor}</td>
             <td><button onclick="editEnrollment(${enrollment.id})">Edit</button></td>
             <td><button onclick="deleteEnrollment(${enrollment.id})">Delete</button></td>
         `;
@@ -277,6 +315,16 @@ document.addEventListener("DOMContentLoaded", function () {
     /*displayUsers();*/
     /*displayCourses();*/
     displayEnrollments();
+});
+// JavaScript for adding active class to clicked navigation item
+document.addEventListener("DOMContentLoaded", function () {
+    const navLinks = document.querySelectorAll("nav ul li a");
+    navLinks.forEach(link => {
+        link.addEventListener("click", function () {
+            navLinks.forEach(link => link.classList.remove("active"));
+            this.classList.add("active");
+        });
+    });
 });
 
 

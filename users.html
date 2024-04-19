@@ -5,6 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Users - E-Learning Platform</title>
     <link rel="stylesheet" href="./css/main.css">
+    <style>
+
+
+        body {
+            background-color: black;
+            color: white; /* Setting text color to white for better contrast */
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -29,17 +37,23 @@
                         <th>ID</th>
                         <th>Name</th>
                         <th>Email</th>
+                        <th>Country</th>
+                        <th>Gender</th>
+
                     </tr>
                 </thead>
                 <tbody>
                     <!-- User data will be populated dynamically -->
                 </tbody>
             </table>
+            <div id="add-user">
+                <button onclick="addUser()">Add Student</button>
+            </div>
         </section>
     </main>
-    <footer>
+    <!--<footer>
         <p>&copy; 2024 E-Learning Platform</p>
-    </footer>
+    </footer>-->
     <script src="./js/main.js"></script>
 </body>
 </html>

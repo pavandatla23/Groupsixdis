@@ -4,7 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Enrollments - E-Learning Platform</title>
-    <link rel="stylesheet" href="./css/main.css"">
+    <link rel="stylesheet" href="./css/main.css" ">
+    <style>
+
+
+        body {
+            background-color: black;
+            color: white; /* Setting text color to white for better contrast */
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -27,19 +35,23 @@
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>User ID</th>
-                        <th>Course ID</th>
+                        <th>Student Name</th>
+                        <th>Course Name</th>
+                        <th>Professor Name</th>
                     </tr>
                 </thead>
                 <tbody>
                     <!-- Enrollment data will be populated dynamically -->
                 </tbody>
             </table>
+            <div id="add-enrollement">
+                <button onclick="addEnrollment()">Add Enrollment</button>
+            </div>
         </section>
     </main>
-    <footer>
+    <!--<footer>
         <p>&copy; 2024 E-Learning Platforms</p>
-    </footer>
+    </footer>-->
     <script src="./js/main.js"></script>
 </body>
 </html>
