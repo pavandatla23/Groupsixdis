@@ -158,7 +158,7 @@ function addUser() {
         users.push(newUser);
         displayUsers();
     } else {
-        alert("Title and description are required for adding a new course.");
+        alert("Title and description are required for adding a new courses.");
     }
 }
 
