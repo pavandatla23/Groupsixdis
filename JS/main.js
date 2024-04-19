@@ -1,21 +1,22 @@
 // Dummy data for courses, users, and enrollments
 let courses = [
-    { id: 1, title: "Mathematics", description: "Learn basic math concepts" },
-    { id: 2, title: "Physics", description: "Explore the world of physics" },
-    { id: 3, title: "Programming", description: "Introduction to programming" }
+    { id: 1, title: "Mathematics", description: "Learn basic math concepts", professor: "Abc" },
+    { id: 2, title: "Physics", description: "Explore the world of physics", professor: "Abc" },
+    { id: 3, title: "Programming", description: "Introduction to programming", professor: "Abc" }
 ];
 
+
 let users = [
-    { id: 1, name: "John Doe", email: "john@example.com" },
-    { id: 2, name: "Jane Smith", email: "jane@example.com" },
-    { id: 3, name: "Alice Johnson", email: "alice@example.com" },
-    { id: 4, name: "Bob Brown", email: "bob@example.com" },
-    { id: 5, name: "Eva Lee", email: "eva@example.com" },
-    { id: 6, name: "Mike Clark", email: "mike@example.com" },
-    { id: 7, name: "Sarah White", email: "sarah@example.com" },
-    { id: 8, name: "David Lee", email: "david@example.com" },
-    { id: 9, name: "Emily Johnson", email: "emily@example.com" },
-    { id: 10, name: "Michael Smith", email: "michael@example.com" }
+    { id: 1, name: "John Doe", email: "john@example.com", country: "ABC" },
+    { id: 2, name: "Jane Smith", email: "jane@example.com", country: "ABC" },
+    { id: 3, name: "Alice Johnson", email: "alice@example.com", country: "ABC" },
+    { id: 4, name: "Bob Brown", email: "bob@example.com", country: "ABC" },
+    { id: 5, name: "Eva Lee", email: "eva@example.com", country: "ABC" },
+    { id: 6, name: "Mike Clark", email: "mike@example.com", country: "ABC" },
+    { id: 7, name: "Sarah White", email: "sarah@example.com", country: "ABC" },
+    { id: 8, name: "David Lee", email: "david@example.com", country: "ABC" },
+    { id: 9, name: "Emily Johnson", email: "emily@example.com", country: "ABC" },
+    { id: 10, name: "Michael Smith", email: "michael@example.com", country: "ABC" }
 ];
 
 let enrollments = [
@@ -45,18 +46,22 @@ function displayCourses() {
     const descriptionHeader = document.createElement('th');
     descriptionHeader.textContent = 'Description';
     headerRow.appendChild(descriptionHeader);
+    const professorHeader = document.createElement('th');
+    professorHeader.textContent = 'Professor';
+    headerRow.appendChild(professorHeader);
     courses.forEach(course => {
         const row = coursesTable.insertRow();
         row.innerHTML = `
             <td>${course.id}</td>
             <td>${course.title}</td>
             <td>${course.description}</td>
-            <td><button onclick="editCourse(${course.id})">Edit</button></td>
+            <td>${course.professor}</td>
+             <td><button onclick="editCourse(${course.id})">Edit</button></td>
             <td><button onclick="deleteCourse(${course.id})">Delete</button></td>
-            
         `;
     });
 }
+
 
 
 
@@ -122,6 +127,9 @@ function displayUsers() {
     const descriptionHeader = document.createElement('th');
     descriptionHeader.textContent = 'Email';
     headerRow.appendChild(descriptionHeader);
+    const countryHeader = document.createElement('th');
+    countryHeader.textContent = 'Country';
+    headerRow.appendChild(countryHeader);
 
     users.forEach(user => {
         const row = usersTable.insertRow();
@@ -129,6 +137,7 @@ function displayUsers() {
             <td>${user.id}</td>
             <td>${user.name}</td>
             <td>${user.email}</td>
+            <td>${user.country}</td>
             <td><button onclick="editUser(${user.id})">Edit</button></td>
             <td><button onclick="deleteUser(${user.id})">Delete</button></td>
             <td><button onclick="addUser(${user.id})">ADD</button></td>
