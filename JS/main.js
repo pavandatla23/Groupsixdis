@@ -100,11 +100,13 @@ function displayCourses() {
 function addCourse() {
     const title = prompt("Enter title for new course:");
     const description = prompt("Enter description for new course:");
-    if (title && description) {
+    const professor = prompt("Enter description for new course:");
+    if (title && description && professor) {
         const newCourse = {
             id: courses.length + 1,
             title: title,
-            description: description
+            description: description,
+            professor: professor
         };
         courses.push(newCourse);
         displayCourses();
@@ -119,9 +121,11 @@ function editCourse(id) {
     if (course) {
         const newTitle = prompt("Enter new title:", course.title);
         const newDescription = prompt("Enter new description:", course.description);
-        if (newTitle !== null && newDescription !== null) {
+        const newProfessor = prompt("Enter new description:", course.professor);
+        if (newTitle !== null && newDescription !== null && newProfessor !== null) {
             course.title = newTitle;
             course.description = newDescription;
+            course.professor = newProfessor
             displayCourses();
         }
     } else {
@@ -182,12 +186,16 @@ function displayUsers() {
 // Function to add a new user
 function addUser() {
     const name = prompt("Enter title for new user:");
-    const email = prompt("Enter description for new user:");
-    if (name && email) {
+    const email = prompt("Enter email for new user:");
+    const country = prompt("Enter country for new user:");
+    const gender = prompt("Enter gender for new user:");
+    if (name && email && country && gender) {
         const newUser = {
             id: users.length + 1,
             name: name,
-            email: email
+            email: email,
+            country: country,
+            gender: gender
         };
         users.push(newUser);
         displayUsers();
@@ -201,10 +209,15 @@ function addUser() {
 function editUser(id) {
     const name = prompt("Enter new name:");
     const email = prompt("Enter new email:");
+    const country = prompt("Enter new country:");
+    const gender = prompt("Enter new gender:");
     const index = users.findIndex(user => user.id === id);
     if (index !== -1) {
         users[index].name = name;
         users[index].email = email;
+        users[index].country = country;
+        users[index].gender = gender;
+
         displayUsers();
     } else {
         alert("User not found!");
@@ -258,11 +271,13 @@ function displayEnrollments() {
 function addEnrollment() {
     const userName = prompt("Enter user name for new enrollment:");
     const courseName = prompt("Enter course name for new enrollment:");
-    if (userName && courseName) {
+    const professor = prompt("Enter professor name for new enrollment:");
+    if (userName && courseName && professor) {
         const newEnrollment = {
             id: enrollments.length + 1,
             userName: userName,
-            courseName: courseName
+            courseName: courseName,
+            professor: professor
         };
         enrollments.push(newEnrollment);
         displayEnrollments();
@@ -277,9 +292,11 @@ function editEnrollment(id) {
     if (enrollment) {
         const newUserName = prompt("Enter new user name:", enrollment.userName);
         const newCourseName = prompt("Enter new course name:", enrollment.courseName);
-        if (newUserName !== null && newCourseName !== null) {
+        const newProfessorName = prompt("Enter new course name:", enrollment.professorName);
+        if (newUserName !== null && newCourseName !== null && newProfessorName != null) {
             enrollment.userName = newUserName;
             enrollment.courseName = newCourseName;
+            enrollment.professor = newProfessorName;
             displayEnrollments();
         }
     } else {
