@@ -6,13 +6,13 @@
     <title>COURSE DETAILS</title>
     <link rel="stylesheet" href="./css/main.css">
     <style>
-       
-
         body {
-            background-color: black;
-            color: white; /* Setting text color to white for better contrast */
+            /* Set background image */
+            background-image: url("./img/Background.jpg");
+            background-size: cover;
+            background-position: center;
+            color: white;
         }
-       
     </style>
 </head>
 <body>
@@ -44,13 +44,17 @@
                 <tbody>
                 </tbody>
             </table>
+            <div id="buttons-container">
+                <button id="edit-course-button">Edit</button>
+                <button id="delete-course-button">Delete</button>
+            </div>
             <div id="add-course">
                 <button onclick="addCourse()">Add Course</button>
             </div>
         </section>
     </main>
     <!--<footer>
-        <p>&copy; 2024 e-learning platform</p>
+    <p>&copy; 2024 Enrollment platform</p>
     </footer>-->
     <script src="./js/main.js"></script>
 </body>

@@ -3,14 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Users - E-Learning Platform</title>
+    <title>STUDENT DETAILS</title>
     <link rel="stylesheet" href="./css/main.css">
     <style>
-
-
         body {
-            background-color: black;
-            color: white; /* Setting text color to white for better contrast */
+            /* Set background image */
+            background-image: url("./img/Background.jpg");
+            background-size: cover;
+            background-position: center;
+            color: white;
         }
     </style>
 </head>
@@ -46,14 +47,15 @@
                     <!-- User data will be populated dynamically -->
                 </tbody>
             </table>
+            <div id="buttons-container">
+                <button id="edit-student-button">Edit</button>
+                <button id="delete-student-button">Delete</button>
+            </div>
             <div id="add-user">
                 <button onclick="addUser()">Add Student</button>
             </div>
         </section>
     </main>
-    <!--<footer>
-        <p>&copy; 2024 E-Learning Platform</p>
-    </footer>-->
     <script src="./js/main.js"></script>
 </body>
 </html>

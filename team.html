@@ -3,50 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us</title>
+    <title>ABOUT US</title>
     <link rel="stylesheet" href="./css/main.css">
     <style>
 
 
         body {
-            background-color: black;
-            font-family: Arial;
+            background-image: url("./img/Background.jpg");
+            background-size: cover;
+            background-position: center;
+            color: white;
+            margin: 0;
+            padding: 0;
         }
-
         /* Center website */
         .main {
-            width: 100%;
+            width: 80%;
             margin: auto;
+            padding-top: 20px;
+            padding-bottom: 10px; /* Add padding at the bottom */
+        }
+
+        header {
+            background-color: green;
+            padding: 2px;
         }
 
         h1 {
-            color: #4CAF50;
-            font-size: 50px;
-            word-break: break-all;
+            color: white;
+            padding: 20px;
+            text-align: center;
         }
 
         p {
-            color: white;
+            color: black;
         }
 
         h2 {
             color: white;
+            text-align: center;
         }
 
+        h3 {
+            color: black;
+        }
 
         .row {
             margin: 8px -16px;
         }
 
             /* Add padding BETWEEN each column */
-            .row, .row > .column {
+            .row,
+            .row > .column {
                 padding: 10px;
             }
 
-        /* Create four equal columns that floats next to each other */
+        /* Create four equal columns that float next to each other */
         .column {
             float: left;
-            width: 30%;
+            width: 23%;
         }
 
         /* Clear floats after rows */
@@ -58,28 +73,71 @@
 
         /* Content */
         .content {
-            background-color: white;
+            background-color: whitesmoke;
             padding: 10px;
+            border-radius: 8px;
         }
 
         /* Responsive layout - makes a two column-layout instead of four columns */
-        @media screen and (max-width: 600px) {
+        @media screen and (max-width: 992px) {
             .column {
                 width: 50%;
             }
         }
 
         /* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
-        @media screen and (max-width: 300px) {
+        @media screen and (max-width: 600px) {
             .column {
-                width: 100%;
+                width: 100%; /* Change width to 100% for single column on smaller screens */
             }
         }
+
+        /* Responsive layout - adjust font size for smaller screens */
+        @media screen and (max-width: 480px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            p {
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Style navigation bar */
+        nav {
+            background-color: #444;
+            padding: 10px;
+        }
+
+            nav ul {
+                list-style-type: none;
+                padding: 0;
+                margin: 0;
+                display: flex; /* Use flexbox for horizontal layout */
+            }
+
+                nav ul li {
+                    margin-right: 5px;
+                }
+
+                    nav ul li:last-child {
+                        margin-right: 0; /* Remove margin for the last item */
+                    }
+
+                    nav ul li a {
+                        color: white;
+                        text-decoration: none;
+                        padding: 10px;
+                    }
     </style>
 </head>
 <body>
     <header>
-        <h1>Welcome to E-Learning Platform</h1>
+        <h1>ABOUT US</h1>
     </header>
     <nav>
         <ul>
@@ -95,9 +153,9 @@
     <!-- MAIN (Center website) -->
     <div class="main">
 
-        <h1>About Project</h1>
+        <!--<h1>About Project</h1>
         <p>ABC</p>
-        <hr>
+        <hr>-->
 
         <h2>PORTFOLIO</h2>
 
@@ -105,46 +163,50 @@
         <div class="row">
             <div class="column">
                 <div class="content">
-                    <!--<img src="pro_pic_1.jpg" alt="Mountains" style="width:100%">-->
-                    <h3>Pavan</h3>
-                    <p>Worked on ....</p>
-                    <a href="https://github.com/pavandatla23/Binary_Search">Git</a>
+                    <h3>Pavan Datla</h3>
+                    <img src="./img/pavan pic.jpg" alt="hi" style="width:70%">
+                    <p>Hi,I'm Pavan Datla, a Business Analytics and Information Systems student at the University of South Florida.With a background as a backend developer.</p>
+                    <p>He developed the 'Home' and 'Courses' sections, ensuring a welcoming first impression and detailed course listings. His work highlights the educational offerings with engaging layouts and interactive elements.</p>
+                    <a href="https://github.com/pavandatla23/MyWeb">Git</a>
                 </div>
             </div>
             <div class="column">
                 <div class="content">
-                    <!--<img src="pro_pic_2.jpg" alt="Lights" style="width:100%">-->
-                    <h3>Shyam</h3>
-                    <p>Worked on ...... </p>
-                    <a href="https://github.com/pavandatla23/Binary_Search">Git</a>
+                    <h3>Shyam prasad Nalasani</h3>
+                    <img src="./img/shyam pass pic.jpg" alt="hi" style="width:70%">
+                    <p>"Hi, I'm Shyam Prasad Nalasani, a Business Analytics and Information Systems student at the University of South Florida with a background as an SAP developer." </p>
+                    <p>He crafted the 'About Us' and 'Charts' pages, offering visitors insight into our team and visual data representation. His sections are a testament to the collaborative spirit and analytical strength of our platform."</p>
+                    <a href="https://github.com/pavandatla23/MyWeb">Git</a>
                 </div>
             </div>
             <div class="column">
                 <div class="content">
-                    <!--<img src="pro_pic_3.jpg" alt="Nature" style="width:100%">-->
-                    <h3>Ajith</h3>
-                    <p>Worked on .....</p>
-                    <a href="https://github.com/pavandatla23/Binary_Search">Git</a>
+                    <h3>Ajith Kumar Sukumar</h3>
+                    <img src="./img/ajith pic.jpg" alt="hi" style="width:70%">
+                    <p>
+                        Hi, I'm Ajithkumar Sukumar, a Business Analytics and Information Systems student at the University of South Florida with a background as an Automation Tester
+                    </p>
+                    <p>He took charge of the 'Enrollments' section, creating a user-friendly interface that simplifies the enrollment process. His contribution makes tracking and managing course registrations seamless and intuitive</p>
+                    <a href="https://github.com/pavandatla23/MyWeb">Git</a>
                 </div>
             </div>
             <div class="column">
                 <div class="content">
-                    <!--<img src="pro_pic_2.jpg" alt="Lights" style="width:100%">-->
-                    <h3>Yashwanth</h3>
-                    <p>Worked on ...... </p>
-                    <a href="https://github.com/pavandatla23/Binary_Search">Git</a>
+                    <h3>Yashwanth Reddy</h3>
+                    <img src="./img/yash.jpg" alt="hi" style="width:70%">
+                    <p>Hi, I'm Yashwanth Reddy Solipuram, a Business Analytics and Information Systems student at the University of South Florida with a bachelor's degree in information technology</p>
+                    <p>His expertise was pivotal in constructing the 'Students' section of our website, providing a comprehensive overview of student resources and information. He facilitated a supportive online environment for student engagement. </p>
+                    <a href="https://github.com/pavandatla23/MyWeb">Git</a>
                 </div>
             </div>
-
-            <!-- END GRID -->
-            <!--</div>
-            <h3>Database model driving the website</h3>
-            <div class="content">
-                <img src="screenshot.jpg" alt="Bear" style="width:50% height:50%">
-
-            </div>-->
-            <!-- END MAIN -->
         </div>
+        <h2>ERD</h2>
+        <!-- New image -->
+        <div class="content">
+            <img src="./img/erd.png" alt="Description of your new image" style="width: 70%">
+        </div>
+
+
     </div>
 
 </body>

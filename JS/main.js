@@ -59,292 +59,251 @@ let enrollments = [
     { id: 18, userName: "James Garcia", courseName: "Physics", professor: "Johnson" },
     { id: 19, userName: "Isabella Clark", courseName: "Chemistry", professor: "Taylor" },
     { id: 20, userName: "Alexander Smith", courseName: "Mathematics", professor: "Smith" }
-];
+]
 
-
-// Function to display courses
-function displayCourses() {
-    const coursesTable = document.getElementById('courses-table');
-    coursesTable.innerHTML = ''; // Clear existing data
-    const headerRow = coursesTable.insertRow();
-    const idHeader = document.createElement('th');
-    idHeader.textContent = 'Id';
-    headerRow.appendChild(idHeader);
-    const titleHeader = document.createElement('th');
-    titleHeader.textContent = 'CourseName';
-    headerRow.appendChild(titleHeader);
-    const descriptionHeader = document.createElement('th');
-    descriptionHeader.textContent = 'Description';
-    headerRow.appendChild(descriptionHeader);
-    const professorHeader = document.createElement('th');
-    professorHeader.textContent = 'Professor';
-    headerRow.appendChild(professorHeader);
-    courses.forEach(course => {
-        const row = coursesTable.insertRow();
-        row.innerHTML = `
-            <td>${course.id}</td>
-            <td>${course.title}</td>
-            <td>${course.description}</td>
-            <td>${course.professor}</td>
-             <td><button onclick="editCourse(${course.id})">Edit</button></td>
-            <td><button onclick="deleteCourse(${course.id})">Delete</button></td>
-        `;
-    });
-}
-
-
-
-
-// Function to add a new course
-
-function addCourse() {
-    const title = prompt("Enter title for new course:");
-    const description = prompt("Enter description for new course:");
-    const professor = prompt("Enter description for new course:");
-    if (title && description && professor) {
-        const newCourse = {
-            id: courses.length + 1,
-            title: title,
-            description: description,
-            professor: professor
-        };
-        courses.push(newCourse);
-        displayCourses();
-    } else {
-        alert("Title and description are required for adding a new course.");
+// Configuration Object
+const pageConfig = {
+    student: {
+        data: users,
+        tableId: 'users-table',
+        editButtonId: 'edit-student-button',
+        deleteButtonId: 'delete-student-button',
+        addButtonId: 'add-user-button',
+        fields: ['ID', 'Student Name', 'Email', 'Country', 'Gender'],
+        fieldKeys: ['id', 'name', 'email', 'country', 'gender']
+    },
+    enrollment: {
+        data: enrollments,
+        tableId: 'enrollments-table',
+        editButtonId: 'edit-enrollment-button',
+        deleteButtonId: 'delete-enrollment-button',
+        addButtonId: 'add-enrollment-button',
+        fields: ['ID', 'Student Name', 'Course Name', 'Professor'],
+        fieldKeys: ['id', 'userName', 'courseName', 'professor']
+    },
+    course: {
+        data: courses,
+        tableId: 'courses-table',
+        editButtonId: 'edit-course-button',
+        deleteButtonId: 'delete-course-button',
+        addButtonId: 'add-course',
+        fields: ['ID', 'Course Name', 'Description', 'Professor'],
+        fieldKeys: ['id', 'title', 'description', 'professor']
     }
-}
+};
 
-// Function to edit a course
-function editCourse(id) {
-    const course = courses.find(course => course.id === id);
-    if (course) {
-        const newTitle = prompt("Enter new title:", course.title);
-        const newDescription = prompt("Enter new description:", course.description);
-        const newProfessor = prompt("Enter new description:", course.professor);
-        if (newTitle !== null && newDescription !== null && newProfessor !== null) {
-            course.title = newTitle;
-            course.description = newDescription;
-            course.professor = newProfessor
-            displayCourses();
-        }
-    } else {
-        alert("Course not found!");
+// Holds the current page's configuration
+let currentPageConfig;
+
+// Detect and set the current page configuration based on existing elements
+function detectCurrentPage() {
+    if (document.getElementById('courses-table')) {
+        return pageConfig.course;
+    } else if (document.getElementById('users-table')) {
+        return pageConfig.student;
+    } else if (document.getElementById('enrollments-table')) {
+        return pageConfig.enrollment;
     }
+    // Default case, handle as needed
+    return null;
 }
 
-// Function to delete a course
-function deleteCourse(id) {
-    const index = courses.findIndex(course => course.id === id);
-    if (index !== -1) {
-        courses.splice(index, 1);
-        displayCourses();
+// Event listener to initialize the page after DOM content has fully loaded
+document.addEventListener('DOMContentLoaded', function () {
+    currentPageConfig = detectCurrentPage();
+    if (currentPageConfig) {
+        displayData();
+        setupButtonListeners();
     } else {
-        alert("Course not found!");
+        console.error('No valid configuration found. Check if the correct table exists on the page.');
     }
-}
-
-
-
-
-// Function to display users
-function displayUsers() {
-    const usersTable = document.getElementById('users-table');
-    usersTable.innerHTML = ''; // Clear existing data
-    const headerRow = usersTable.insertRow();
-    const idHeader = document.createElement('th');
-    idHeader.textContent = 'Id';
-    headerRow.appendChild(idHeader);
-    const titleHeader = document.createElement('th');
-    titleHeader.textContent = 'StudentName';
-    headerRow.appendChild(titleHeader);
-    const descriptionHeader = document.createElement('th');
-    descriptionHeader.textContent = 'Email';
-    headerRow.appendChild(descriptionHeader);
-    const countryHeader = document.createElement('th');
-    countryHeader.textContent = 'Country';
-    headerRow.appendChild(countryHeader);
-    const genderHeader = document.createElement('th');
-    genderHeader.textContent = 'Gender';
-    headerRow.appendChild(genderHeader);
-
-    users.forEach(user => {
-        const row = usersTable.insertRow();
-        row.innerHTML = `
-            <td>${user.id}</td>
-            <td>${user.name}</td>
-            <td>${user.email}</td>
-            <td>${user.country}</td>
-            <td>${user.gender}</td>
-            <td><button onclick="editUser(${user.id})">Edit</button></td>
-            <td><button onclick="deleteUser(${user.id})">Delete</button></td>
-           
-        `;
-    });
-}
-
-// Function to add a new user
-function addUser() {
-    const name = prompt("Enter title for new user:");
-    const email = prompt("Enter email for new user:");
-    const country = prompt("Enter country for new user:");
-    const gender = prompt("Enter gender for new user:");
-    if (name && email && country && gender) {
-        const newUser = {
-            id: users.length + 1,
-            name: name,
-            email: email,
-            country: country,
-            gender: gender
-        };
-        users.push(newUser);
-        displayUsers();
-    } else {
-        alert("Title and description are required for adding a new courses.");
-    }
-}
-
-
-// Function to edit a user
-function editUser(id) {
-    const name = prompt("Enter new name:");
-    const email = prompt("Enter new email:");
-    const country = prompt("Enter new country:");
-    const gender = prompt("Enter new gender:");
-    const index = users.findIndex(user => user.id === id);
-    if (index !== -1) {
-        users[index].name = name;
-        users[index].email = email;
-        users[index].country = country;
-        users[index].gender = gender;
-
-        displayUsers();
-    } else {
-        alert("User not found!");
-    }
-}
-
-// Function to delete a user
-function deleteUser(id) {
-    const index = users.findIndex(user => user.id === id);
-    if (index !== -1) {
-        users.splice(index, 1);
-        displayUsers();
-    } else {
-        alert("User not found!");
-    }
-
-
-}
-
-// Function to display enrollments
-function displayEnrollments() {
-    const enrollmentsTable = document.getElementById('enrollments-table');
-    enrollmentsTable.innerHTML = ''; // Clear existing data
-    const headerRow = enrollmentsTable.insertRow();
-    const idHeader = document.createElement('th');
-    idHeader.textContent = 'Id';
-    headerRow.appendChild(idHeader);
-    const titleHeader = document.createElement('th');
-    titleHeader.textContent = 'StudentName';
-    headerRow.appendChild(titleHeader);
-    const descriptionHeader = document.createElement('th');
-    descriptionHeader.textContent = 'CourseName';
-    headerRow.appendChild(descriptionHeader);
-    const eProfessorHeader = document.createElement('th');
-    eProfessorHeader.textContent = 'ProfessorName';
-    headerRow.appendChild(eProfessorHeader);
-    enrollments.forEach(enrollment => {
-        const row = enrollmentsTable.insertRow();
-        row.innerHTML = `
-            <td>${enrollment.id}</td>
-            <td>${enrollment.userName}</td>
-            <td>${enrollment.courseName}</td>
-            <td>${enrollment.professor}</td>
-            <td><button onclick="editEnrollment(${enrollment.id})">Edit</button></td>
-            <td><button onclick="deleteEnrollment(${enrollment.id})">Delete</button></td>
-        `;
-    });
-}
-
-// Function to add a new enrollment
-function addEnrollment() {
-    const userName = prompt("Enter user name for new enrollment:");
-    const courseName = prompt("Enter course name for new enrollment:");
-    const professor = prompt("Enter professor name for new enrollment:");
-    if (userName && courseName && professor) {
-        const newEnrollment = {
-            id: enrollments.length + 1,
-            userName: userName,
-            courseName: courseName,
-            professor: professor
-        };
-        enrollments.push(newEnrollment);
-        displayEnrollments();
-    } else {
-        alert("User name and course name are required for adding a new enrollment.");
-    }
-}
-
-// Function to edit an enrollment
-function editEnrollment(id) {
-    const enrollment = enrollments.find(enrollment => enrollment.id === id);
-    if (enrollment) {
-        const newUserName = prompt("Enter new user name:", enrollment.userName);
-        const newCourseName = prompt("Enter new course name:", enrollment.courseName);
-        const newProfessorName = prompt("Enter new course name:", enrollment.professorName);
-        if (newUserName !== null && newCourseName !== null && newProfessorName != null) {
-            enrollment.userName = newUserName;
-            enrollment.courseName = newCourseName;
-            enrollment.professor = newProfessorName;
-            displayEnrollments();
-        }
-    } else {
-        alert("Enrollment not found!");
-    }
-}
-
-// Function to delete an enrollment
-function deleteEnrollment(id) {
-    const index = enrollments.findIndex(enrollment => enrollment.id === id);
-    if (index !== -1) {
-        enrollments.splice(index, 1);
-        displayEnrollments();
-    } else {
-        alert("Enrollment not found!");
-    }
-}
-
-
-// Call functions to display initial data
-// Call functions to display initial data
-document.addEventListener("DOMContentLoaded", function () {
-    displayUsers();
-    displayCourses();
-    displayEnrollments();
 });
-document.addEventListener("DOMContentLoaded", function () {
-    /*displayUsers();*/
-    displayCourses();
-    /*displayEnrollments();*/
-});
-document.addEventListener("DOMContentLoaded", function () {
-    /*displayUsers();*/
-    /*displayCourses();*/
-    displayEnrollments();
-});
-// JavaScript for adding active class to clicked navigation item
-document.addEventListener("DOMContentLoaded", function () {
-    const navLinks = document.querySelectorAll("nav ul li a");
-    navLinks.forEach(link => {
-        link.addEventListener("click", function () {
-            navLinks.forEach(link => link.classList.remove("active"));
-            this.classList.add("active");
+
+function setupButtonListeners() {
+    document.getElementById(currentPageConfig.editButtonId).addEventListener('click', editSelectedItem);
+    document.getElementById(currentPageConfig.deleteButtonId).addEventListener('click', deleteSelectedItem);
+    document.getElementById(currentPageConfig.addButtonId).addEventListener('click', addEntry);
+}
+
+function displayData() {
+    disableButtons();  // Disable buttons initially
+    const dataTable = document.getElementById(currentPageConfig.tableId);
+    dataTable.innerHTML = '';  // Clear existing data
+
+    const headerRow = dataTable.insertRow();
+    currentPageConfig.fields.forEach(text => {
+        const header = document.createElement('th');
+        header.textContent = text;
+        headerRow.appendChild(header);
+    });
+
+    currentPageConfig.data.forEach((item, index) => {
+        const row = dataTable.insertRow();
+        currentPageConfig.fieldKeys.forEach(key => {
+            const cell = row.insertCell();
+            cell.textContent = item[key];
+        });
+
+        row.addEventListener('click', function () {
+            selectedRowIndex = index;
+            // Enable buttons when a row is selected
+            enableButtons();
+            const rows = dataTable.getElementsByTagName('tr');
+            Array.from(rows).forEach(row => row.classList.remove('selected'));
+            this.classList.add('selected');
         });
     });
-});
+}
+
+function disableButtons() {
+    document.getElementById(currentPageConfig.editButtonId).disabled = true;
+    document.getElementById(currentPageConfig.deleteButtonId).disabled = true;
+}
+
+function enableButtons() {
+    document.getElementById(currentPageConfig.editButtonId).disabled = false;
+    document.getElementById(currentPageConfig.deleteButtonId).disabled = false;
+}
+
+// Function to edit, delete, or add items based on selected row index
+function editSelectedItem() {
+    if (selectedRowIndex === -1) {
+        console.log('No item selected.');
+        return;
+    }
+    const selectedItem = currentPageConfig.data[selectedRowIndex];
+    currentPageConfig.fields.forEach((field, index) => {
+        const key = currentPageConfig.fieldKeys[index];
+        let newValue = prompt(`Enter new ${field}:`, selectedItem[key]);
+        while (newValue !== null && !isValidInput(newValue, field)) {
+            alert(`Invalid input for ${field}. Please enter a valid value.`);
+            newValue = prompt(`Enter new ${field}:`, selectedItem[key]);
+        }
+        if (newValue !== null) {
+            selectedItem[key] = newValue;
+        }
+    });
+    displayData();
+}
+
+function deleteSelectedItem() {
+    if (selectedRowIndex === -1) {
+        console.log('No item selected.');
+        return;
+    }
+    if (confirm("Are you sure you want to delete this item?")) {
+        currentPageConfig.data.splice(selectedRowIndex, 1);
+        displayData();
+        disableButtons();
+        // Reset the selection index
+        selectedRowIndex = -1;
+    }
+}
+
+function addEntry() {
+    switch (currentPageConfig) {
+        case pageConfig.student:
+            addUser();
+            break;
+        case pageConfig.enrollment:
+            addEnrollment();
+            break;
+        case pageConfig.course:
+            addCourse();
+            break;
+    }
+}
 
 
 
 
 
+function addUser() {
+    const newId = prompt("Enter new ID (must be numeric):");
+    const newName = prompt("Enter new Name (alphabetic only):");
+    const newEmail = prompt("Enter new Email (must contain '@' and a domain):");
+    const newCountry = prompt("Enter new Country (alphabetic only):");
+    const newGender = prompt("Enter new Gender (Male, Female, or Other):");
+
+    if (!newId || !newName || !newEmail || !newCountry || !newGender) {
+        alert("All fields must be filled!");
+        return;
+    }
+
+    users.push({
+        id: newId,
+        name: newName,
+        email: newEmail,
+        country: newCountry,
+        gender: newGender
+    });
+
+    displayData()
+}
+
+function addEnrollment() {
+    const newId = prompt("Enter new ID (must be numeric):");
+    const newStudentName = prompt("Enter new Student Name (alphabetic only):");
+    const newCourseName = prompt("Enter new Course Name (free text):");
+    const newProfessorName = prompt("Enter new Professor Name (alphabetic only):");
+
+    if (!newId || !newStudentName || !newCourseName || !newProfessorName) {
+        alert("All fields must be filled!");
+        return;
+    }
+
+    enrollments.push({
+        id: newId,
+        userName: newStudentName,
+        courseName: newCourseName,
+        professor: newProfessorName
+    });
+
+    displayData();
+}
+//function to addcourse
+function addCourse() {
+    const newId = prompt("Enter new ID (must be numeric):");
+    const newTitle = prompt("Enter new Title (alphabetic only):");
+    const newDescription = prompt("Enter new Description (free text):");
+    const newProfessor = prompt("Enter new Professor's Name (alphabetic only):");
+
+    if (!newId || !newTitle || !newDescription || !newProfessor) {
+        alert("All fields must be filled!");
+        return;
+    }
+
+    courses.push({
+        id: newId,
+        title: newTitle,
+        description: newDescription,
+        professor: newProfessor
+    });
+
+    displayData();
+}
+
+
+// Validation function
+function isValidInput(input, field) {
+    switch (field) {
+        case 'ID':
+            return /^\d+$/.test(input);
+        case 'Email':
+            return /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(input);
+        case 'Name':
+        case 'Student Name':
+        case 'Professor Name':
+        case 'Course Name':
+        case 'Description':
+        case 'Country':
+            return /^[A-Za-z\s]+$/.test(input);
+        case 'Gender':
+            return /^(Male|Female|Other)$/i.test(input);
+        default:
+            return true;
+    }
+}
+
+// Initialize selectedRowIndex
+let selectedRowIndex = -1;  
